@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 24px;
+            color: #333;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .prev-btn {
+            left: 10px;
+        }
+
+        .next-btn {
+            right: 10px;
+        }
+    
+
+
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.featured-product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.featured-product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-details {
+    padding: 20px;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel">
+            <!-- Featured Product Items -->
+            <div class="carousel-item">
+                <div class="featured-product">
+                    <img src="cakee1.jpeg" alt="Featured Product">
+                    <div class="product-details">
+                        <h2>Royal Velvet Dream Cake</h2>
+                        <p>Behold the enchanting allure of our "Royal Velvet Dream Cake" — a regal creation that transcends the ordinary, bringing the essence of royalty to your dessert table. Dressed in a captivating shade of purple, this cake is a visual and gastronomic masterpiece.</p>
+                        <button onclick="viewDetails()">View Details</button>
+                    </div>
+                </div> <!-- Product 1 Content --> </div>
+            <div class="carousel-item"> 
+                <div class="featured-product">
+                    <img src="cake 2.jpeg" alt="Featured Product">
+                    <div class="product-details">
+                        <h2>Chocolate Cake</h2>
+                        <p>Indulge your taste buds in the rich and velvety experience of our Decadent Chocolate Bliss Cake. This heavenly creation is a symphony of deep, dark chocolate flavors that will transport you to a realm of pure indulgence.</p>
+                        <button onclick="viewDetails()">View Details</button>
+                    </div>
+                </div><!-- Product 2 Content --> </div>
+            <div class="carousel-item">
+                <div class="featured-product">
+                    <img src="cake 3.jpeg" alt="Featured Product">
+                    <div class="product-details">
+                        <h2>Pink Delight Cake</h2>
+                        <p>Introducing our "Pretty in Pink Delight Cake" – a confectionery masterpiece that not only satiates your sweet tooth but also captivates with its charming hue. This delightful pink-colored cake is a celebration of sweetness and elegance.</p>
+                        <button onclick="viewDetails()">View Details</button>
+                    </div>
+                </div> <!-- Product 3 Content --> </div>
+            <!-- Add more product items as needed -->
+        </div>
+    
+        <button class="carousel-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+        <button class="carousel-btn next-btn" onclick="nextSlide()">&#10095;</button>
+    </div>
+    
+</body>
+<script>
+    let currentIndex = 0;
+
+    function showSlide(index) {
+        const carousel = document.querySelector('.carousel');
+        const totalSlides = document.querySelectorAll('.carousel-item').length;
+
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+
+        const transformValue = -currentIndex * 100 + '%';
+        carousel.style.transform = `translateX(${transformValue})`;
+    }
+
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    // Automatically rotate through slides every 5 seconds
+    setInterval(nextSlide, 3000);
+</script>
+
+</html>
